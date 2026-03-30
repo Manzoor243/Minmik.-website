@@ -175,17 +175,19 @@ async function sendMessage() {
   const typingId = showTyping();
 
   try {
-    const response = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 1000,
-        system: SYSTEM_PROMPT,
-        messages: conversationHistory
-      })
-    });
-
+   const response = await fetch('/.netlify/functions/chat', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    system: SYSTEM_PROMPT,
+    messages: [
+      ...chatHistory,
+      { role: 'user', content: message }
+    ]
+  })
+});
     if (!response.ok) {
       const err = await response.json();
       throw new Error(err.error?.message || `API error: ${response.status}`);
