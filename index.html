@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MinMIK | Managed IT Services Perth</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0A1628;
+    --navy-mid: #112240;
+    --blue: #1565C0;
+    --blue-bright: #1E88E5;
+    --cyan: #00BCD4;
+    --cyan-light: #B2EBF2;
+    --white: #FFFFFF;
+    --off-white: #F0F4FF;
+    --gray-light: #E8EDF5;
+    --gray-mid: #8FA0B8;
+    --text-dark: #0D1B2A;
+    --text-body: #2C3E55;
+    --accent: #00E5FF;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--text-body);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 1rem 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(10, 22, 40, 0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0, 229, 255, 0.1);
+  }
+
+  .logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.6rem;
+    color: var(--white);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+  }
+
+  .logo span { color: var(--accent); }
+
+  .nav-links {
+    display: flex; gap: 2rem; list-style: none;
+    align-items: center;
+  }
+
+  .nav-links a {
+    color: var(--gray-mid);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--white); }
+
+  .nav-cta {
+    background: var(--accent) !important;
+    color: var(--navy) !important;
+    padding: 0.5rem 1.25rem;
+    border-radius: 6px;
+    font-weight: 600 !important;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--navy);
+    display: flex; align-items: center;
+    padding: 8rem 5% 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute; top: -20%; right: -10%;
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(21,101,192,0.25) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute; bottom: -10%; left: 20%;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(0,229,255,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(0, 229, 255, 0.08);
+    border: 1px solid rgba(0, 229, 255, 0.25);
+    border-radius: 100px;
+    padding: 0.35rem 0.9rem;
+    font-size: 0.78rem;
+    color: var(--accent);
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 3.8rem);
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.25rem;
+  }
+
+  h1 em {
+    font-style: normal;
+    color: var(--accent);
+  }
+
+  .hero-sub {
+    font-size: 1.05rem;
+    color: var(--gray-mid);
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+    max-width: 480px;
+  }
+
+  .hero-actions {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: var(--accent);
+    color: var(--navy);
+    padding: 0.85rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,229,255,0.3); }
+
+  .btn-outline {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: transparent;
+    color: var(--white);
+    padding: 0.85rem 2rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.2);
+    font-weight: 500;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .btn-outline:hover { border-color: var(--accent); background: rgba(0,229,255,0.06); }
+
+  /* Hero visual panel */
+  .hero-visual {
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .tech-card {
+    background: rgba(17, 34, 64, 0.9);
+    border: 1px solid rgba(0,229,255,0.15);
+    border-radius: 16px;
+    padding: 2rem;
+    width: 100%;
+    max-width: 360px;
+  }
+
+  .tech-card-header {
+    display: flex; align-items: center; gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .status-dot {
+    width: 8px; height: 8px;
+    background: #4CAF50;
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(76,175,80,0.6);
+  }
+
+  .tech-card-title {
+    font-size: 0.8rem;
+    color: var(--gray-mid);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 500;
+  }
+
+  .metric-row {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .metric-row:last-child { border-bottom: none; }
+
+  .metric-label {
+    font-size: 0.85rem;
+    color: var(--gray-mid);
+  }
+
+  .metric-value {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--white);
+  }
+
+  .metric-value.green { color: #4CAF50; }
+  .metric-value.cyan { color: var(--accent); }
+
+  .bar-wrap {
+    width: 80px;
+    height: 4px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--blue-bright), var(--accent));
+    border-radius: 2px;
+  }
+
+  /* ── SECTION BASE ── */
+  section { padding: 5rem 5%; }
+
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--blue-bright);
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+  }
+
+  h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    font-weight: 800;
+    color: var(--text-dark);
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin-bottom: 1rem;
+  }
+
+  .section-sub {
+    font-size: 1rem;
+    color: #6B7B8E;
+    max-width: 540px;
+    margin-bottom: 3rem;
+    line-height: 1.7;
+  }
+
+  /* ── STATS BAR ── */
+  .stats-bar {
+    background: var(--navy);
+    padding: 3rem 5%;
+  }
+
+  .stats-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+
+  .stat-label {
+    font-size: 0.85rem;
+    color: var(--gray-mid);
+    font-weight: 400;
+  }
+
+  /* ── SERVICES ── */
+  .services { background: var(--off-white); }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .service-card {
+    background: var(--white);
+    border-radius: 14px;
+    padding: 2rem;
+    border: 1px solid var(--gray-light);
+    transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-card::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--blue), var(--accent));
+    transform: scaleX(0);
+    transition: transform 0.3s;
+    transform-origin: left;
+  }
+
+  .service-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(21,101,192,0.1); border-color: #C5D5EE; }
+  .service-card:hover::after { transform: scaleX(1); }
+
+  .service-icon {
+    width: 48px; height: 48px;
+    background: linear-gradient(135deg, #E3EDFA, #C8DDF7);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.25rem;
+    font-size: 1.4rem;
+  }
+
+  .service-card h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 0.6rem;
+  }
+
+  .service-card p {
+    font-size: 0.88rem;
+    color: #6B7B8E;
+    line-height: 1.65;
+  }
+
+  /* ── WHY MINMIK ── */
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .why-visual {
+    background: var(--navy);
+    border-radius: 20px;
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .why-visual::before {
+    content: '';
+    position: absolute; top: -30%; right: -20%;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(0,229,255,0.12) 0%, transparent 70%);
+  }
+
+  .checklist { list-style: none; }
+
+  .checklist li {
+    display: flex; gap: 0.75rem;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.75);
+    align-items: flex-start;
+    line-height: 1.5;
+  }
+
+  .checklist li:last-child { border-bottom: none; }
+
+  .check-icon {
+    flex-shrink: 0;
+    width: 20px; height: 20px;
+    background: rgba(0,229,255,0.12);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin-top: 1px;
+  }
+
+  .check-icon svg { width: 11px; height: 11px; }
+
+  .why-points { display: flex; flex-direction: column; gap: 1.5rem; }
+
+  .why-point {
+    display: flex; gap: 1.25rem;
+    align-items: flex-start;
+  }
+
+  .why-num {
+    flex-shrink: 0;
+    font-family: 'Syne', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--blue-bright);
+    line-height: 1;
+    width: 40px;
+  }
+
+  .why-point h4 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    color: var(--text-dark);
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .why-point p { font-size: 0.88rem; color: #6B7B8E; line-height: 1.65; }
+
+  /* ── PRICING ── */
+  .pricing { background: var(--off-white); }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .pricing-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 2rem;
+    border: 1px solid var(--gray-light);
+    position: relative;
+  }
+
+  .pricing-card.featured {
+    background: var(--navy);
+    border-color: var(--blue);
+    box-shadow: 0 20px 60px rgba(21,101,192,0.2);
+    transform: scale(1.03);
+  }
+
+  .popular-badge {
+    position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+    background: var(--accent);
+    color: var(--navy);
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 0.3rem 0.9rem;
+    border-radius: 100px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .plan-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--blue-bright);
+    margin-bottom: 0.5rem;
+  }
+
+  .featured .plan-name { color: var(--accent); }
+
+  .plan-price {
+    font-family: 'Syne', sans-serif;
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+
+  .featured .plan-price { color: var(--white); }
+
+  .plan-period {
+    font-size: 0.82rem;
+    color: #8FA0B8;
+    margin-bottom: 1.5rem;
+  }
+
+  .plan-features {
+    list-style: none;
+    display: flex; flex-direction: column; gap: 0.65rem;
+    margin-bottom: 2rem;
+  }
+
+  .plan-features li {
+    font-size: 0.88rem;
+    color: #6B7B8E;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+
+  .featured .plan-features li { color: rgba(255,255,255,0.7); }
+
+  .plan-features li::before {
+    content: '✓';
+    color: var(--blue-bright);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .featured .plan-features li::before { color: var(--accent); }
+
+  .plan-cta {
+    display: block; width: 100%;
+    text-align: center;
+    padding: 0.75rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: all 0.2s;
+    border: 1.5px solid var(--blue-bright);
+    color: var(--blue-bright);
+    background: transparent;
+    cursor: pointer;
+  }
+
+  .plan-cta:hover { background: var(--blue-bright); color: var(--white); }
+  .featured .plan-cta { background: var(--accent); color: var(--navy); border-color: var(--accent); }
+  .featured .plan-cta:hover { box-shadow: 0 6px 20px rgba(0,229,255,0.35); }
+
+  /* ── PROCESS ── */
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    position: relative;
+  }
+
+  .process-steps::before {
+    content: '';
+    position: absolute; top: 28px; left: 12.5%; right: 12.5%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--blue-bright), var(--accent), transparent);
+  }
+
+  .step {
+    text-align: center;
+    position: relative;
+  }
+
+  .step-num {
+    width: 56px; height: 56px;
+    background: var(--navy);
+    border: 2px solid var(--blue-bright);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1.25rem;
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1rem;
+    color: var(--accent);
+    position: relative; z-index: 1;
+  }
+
+  .step h4 {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+  }
+
+  .step p { font-size: 0.84rem; color: #6B7B8E; line-height: 1.6; }
+
+  /* ── TECHNOLOGY ── */
+  .tech-logos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .tech-logo {
+    background: var(--white);
+    border: 1px solid var(--gray-light);
+    border-radius: 10px;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #4A5E72;
+    transition: border-color 0.2s, color 0.2s, transform 0.2s;
+    white-space: nowrap;
+  }
+
+  .tech-logo:hover { border-color: var(--blue-bright); color: var(--blue-bright); transform: translateY(-2px); }
+
+  /* ── CTA BAND ── */
+  .cta-band {
+    background: var(--navy);
+    padding: 5rem 5%;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-band::before {
+    content: '';
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+    width: 600px; height: 300px;
+    background: radial-gradient(ellipse, rgba(21,101,192,0.3) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cta-band h2 { color: var(--white); max-width: 600px; margin: 0 auto 1rem; }
+  .cta-band p { color: var(--gray-mid); margin-bottom: 2rem; font-size: 1rem; }
+
+  /* ── CONTACT ── */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .contact-info h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 0.4rem;
+  }
+
+  .contact-detail {
+    display: flex; gap: 0.85rem;
+    align-items: flex-start;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--gray-light);
+  }
+
+  .contact-detail:last-child { border-bottom: none; }
+
+  .contact-icon {
+    width: 36px; height: 36px;
+    background: #E3EDFA;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    font-size: 1rem;
+  }
+
+  .contact-detail p { font-size: 0.88rem; color: #6B7B8E; margin-top: 0.2rem; }
+  .contact-detail a { color: var(--blue-bright); text-decoration: none; font-size: 0.88rem; }
+
+  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  .form-field { display: flex; flex-direction: column; gap: 0.4rem; }
+
+  .form-field label {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--text-dark);
+  }
+
+  .form-field input,
+  .form-field textarea,
+  .form-field select {
+    padding: 0.7rem 0.9rem;
+    border: 1px solid var(--gray-light);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text-dark);
+    background: var(--white);
+    transition: border-color 0.2s;
+    outline: none;
+  }
+
+  .form-field input:focus,
+  .form-field textarea:focus,
+  .form-field select:focus { border-color: var(--blue-bright); }
+
+  .form-field textarea { resize: vertical; min-height: 120px; }
+
+  .form-submit {
+    background: var(--navy);
+    color: var(--white);
+    border: none;
+    padding: 0.9rem 2rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    transition: background 0.2s;
+    align-self: flex-start;
+  }
+
+  .form-submit:hover { background: var(--blue); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy);
+    padding: 3rem 5% 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .footer-grid {
+    max-width: 1200px; margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .footer-brand p {
+    font-size: 0.85rem;
+    color: var(--gray-mid);
+    line-height: 1.65;
+    margin-top: 0.75rem;
+    max-width: 280px;
+  }
+
+  .footer-col h5 {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--white);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 1rem;
+  }
+
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  .footer-col a { font-size: 0.85rem; color: var(--gray-mid); text-decoration: none; transition: color 0.2s; }
+  .footer-col a:hover { color: var(--accent); }
+
+  .footer-bottom {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: center;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    font-size: 0.8rem;
+    color: #4A5E72;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero-grid, .why-grid, .contact-grid { grid-template-columns: 1fr; }
+    .hero-visual { display: none; }
+    .services-grid, .pricing-grid { grid-template-columns: 1fr; }
+    .pricing-card.featured { transform: none; }
+    .process-steps { grid-template-columns: 1fr 1fr; }
+    .process-steps::before { display: none; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 600px) {
+    .nav-links { display: none; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .process-steps { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">Min<span>MIK</span></a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#process">How It Works</a></li>
+    <li><a href="#contact" class="nav-cta">Get Started</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid">
+    <div class="hero-content">
+      <div class="hero-badge">Perth's Trusted MSP Partner</div>
+      <h1>Turning Technology Into <em>Business Solutions</em></h1>
+      <p class="hero-sub">MinMIK delivers enterprise-grade managed IT services, cloud infrastructure, and cybersecurity to small and medium businesses across Perth — so you can focus on growing your business.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">Get a Free Consultation →</a>
+        <a href="#services" class="btn-outline">See Our Services</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="tech-card">
+        <div class="tech-card-header">
+          <div class="status-dot"></div>
+          <span class="tech-card-title">MinMIK Live Dashboard</span>
+        </div>
+        <div class="metric-row">
+          <span class="metric-label">System Uptime</span>
+          <span class="metric-value green">99.97%</span>
+        </div>
+        <div class="metric-row">
+          <span class="metric-label">Endpoints Managed</span>
+          <span class="metric-value cyan">500+</span>
+        </div>
+        <div class="metric-row">
+          <span class="metric-label">Avg Response Time</span>
+          <span class="metric-value">< 4 hrs</span>
+        </div>
+        <div class="metric-row">
+          <span class="metric-label">Threat Detections</span>
+          <div style="display:flex; gap:0.75rem; align-items:center;">
+            <div class="bar-wrap"><div class="bar-fill" style="width:78%"></div></div>
+            <span class="metric-value green">Blocked</span>
+          </div>
+        </div>
+        <div class="metric-row">
+          <span class="metric-label">Azure Health</span>
+          <span class="metric-value cyan">Optimal</span>
+        </div>
+        <div class="metric-row">
+          <span class="metric-label">Backup Status</span>
+          <span class="metric-value green">All Protected</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stats-grid">
+    <div>
+      <div class="stat-num">11+</div>
+      <div class="stat-label">Years of enterprise IT experience</div>
+    </div>
+    <div>
+      <div class="stat-num">99.9%</div>
+      <div class="stat-label">Uptime SLA guaranteed</div>
+    </div>
+    <div>
+      <div class="stat-num">500+</div>
+      <div class="stat-label">Endpoints under management</div>
+    </div>
+    <div>
+      <div class="stat-num">< 4hr</div>
+      <div class="stat-label">Average incident response time</div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-inner">
+    <div class="section-label">What We Do</div>
+    <h2>Complete IT Services for<br>Growing Businesses</h2>
+    <p class="section-sub">From day-to-day helpdesk support to cloud migration and cybersecurity — we become your full IT department or augment your existing team.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">☁️</div>
+        <h3>Cloud & Azure Infrastructure</h3>
+        <p>Microsoft Azure design, deployment, and ongoing management. IaaS/PaaS, Azure Site Recovery, backup, and hybrid cloud environments built for your business.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">💻</div>
+        <h3>Endpoint & Modern Workplace</h3>
+        <p>Microsoft Intune and Autopilot SOE deployment, Windows 11 management, M365 configuration, and complete device lifecycle management.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔒</div>
+        <h3>Cybersecurity & Compliance</h3>
+        <p>SentinelOne EDR, Conditional Access, Zero Trust identity, Fortinet firewall management, and compliance frameworks tailored to your industry.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🛡️</div>
+        <h3>Backup & Disaster Recovery</h3>
+        <p>Veeam and Azure Backup implementation with tested DR plans. We document and regularly test your RTOs and RPOs so recovery is never a surprise.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🌐</div>
+        <h3>Network & Connectivity</h3>
+        <p>Fortinet FortiGate and SD-WAN design, VPN configuration, firewall policy management, and proactive SNMP network monitoring.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🎯</div>
+        <h3>Helpdesk & L3 Support</h3>
+        <p>Responsive Tier 1–3 helpdesk services with real engineers who understand your environment — not just script readers. SLA-backed response times.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY MINMIK -->
+<section id="why">
+  <div class="section-inner">
+    <div class="why-grid">
+      <div class="why-visual">
+        <div style="font-family:'Syne',sans-serif; font-size:1rem; font-weight:700; color:var(--accent); margin-bottom:1.25rem;">What you get with MinMIK</div>
+        <ul class="checklist">
+          <li>
+            <span class="check-icon"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#00E5FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            Enterprise-grade tools and processes scaled for SMBs
+          </li>
+          <li>
+            <span class="check-icon"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#00E5FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            Microsoft Partner — CSP licensing at competitive rates
+          </li>
+          <li>
+            <span class="check-icon"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#00E5FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            AZ-104, MD-102, VCP, ITIL & ISC2 certified engineers
+          </li>
+          <li>
+            <span class="check-icon"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#00E5FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            Transparent fixed-fee monthly pricing — no bill shock
+          </li>
+          <li>
+            <span class="check-icon"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#00E5FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            Perth-based team with same-day on-site support available
+          </li>
+          <li>
+            <span class="check-icon"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#00E5FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            Privacy Act & industry compliance expertise
+          </li>
+          <li>
+            <span class="check-icon"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#00E5FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            Proactive monitoring — we fix issues before you notice them
+          </li>
+        </ul>
+      </div>
+      <div>
+        <div class="section-label">Why MinMIK</div>
+        <h2>Enterprise IT Expertise. SMB Prices.</h2>
+        <p class="section-sub">Most MSPs offer generic support. MinMIK brings deep Azure, Intune, and security expertise — the same skills deployed in enterprise environments — directly to your business.</p>
+        <div class="why-points">
+          <div class="why-point">
+            <div class="why-num">01</div>
+            <div>
+              <h4>Certified & Experienced</h4>
+              <p>Our lead engineer holds AZ-104, MD-102, VMware VCP, ISC2 CC, and ITIL certifications — backed by 11+ years delivering IT for enterprises across Australia and the Middle East.</p>
+            </div>
+          </div>
+          <div class="why-point">
+            <div class="why-num">02</div>
+            <div>
+              <h4>Local Perth Team</h4>
+              <p>We're Perth-based, so when you need someone on-site, we're there — not managing your problem from interstate or overseas.</p>
+            </div>
+          </div>
+          <div class="why-point">
+            <div class="why-num">03</div>
+            <div>
+              <h4>Fixed Monthly Pricing</h4>
+              <p>No surprise invoices. One predictable monthly fee covers your entire IT environment — licences, support, monitoring, and management.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="section-inner">
+    <div class="section-label">Pricing</div>
+    <h2>Simple, Transparent Plans</h2>
+    <p class="section-sub">All plans include Microsoft 365 Business licences, proactive monitoring, and local Perth support. No lock-in contracts.</p>
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <div class="plan-name">Essentials</div>
+        <div class="plan-price">$249</div>
+        <div class="plan-period">per user / month incl. M365</div>
+        <ul class="plan-features">
+          <li>Microsoft 365 Business Basic</li>
+          <li>Helpdesk support (L1–L2)</li>
+          <li>Endpoint monitoring & patching</li>
+          <li>Email security & spam filtering</li>
+          <li>Monthly reporting</li>
+          <li>Remote support</li>
+        </ul>
+        <a href="#contact" class="plan-cta">Get Started</a>
+      </div>
+      <div class="pricing-card featured">
+        <div class="popular-badge">Most Popular</div>
+        <div class="plan-name">Business</div>
+        <div class="plan-price" style="color:var(--white)">$379</div>
+        <div class="plan-period" style="color:rgba(255,255,255,0.5)">per user / month incl. M365</div>
+        <ul class="plan-features">
+          <li>Microsoft 365 Business Premium</li>
+          <li>Intune endpoint management</li>
+          <li>L1–L3 helpdesk + escalation</li>
+          <li>SentinelOne EDR protection</li>
+          <li>Azure AD / Entra ID setup</li>
+          <li>Backup & DR management</li>
+          <li>Quarterly IT reviews</li>
+        </ul>
+        <a href="#contact" class="plan-cta">Get Started</a>
+      </div>
+      <div class="pricing-card">
+        <div class="plan-name">Enterprise</div>
+        <div class="plan-price">Custom</div>
+        <div class="plan-period">tailored to your business</div>
+        <ul class="plan-features">
+          <li>Full Azure cloud management</li>
+          <li>VMware virtualisation</li>
+          <li>Fortinet network security</li>
+          <li>Compliance & audit support</li>
+          <li>Dedicated account manager</li>
+          <li>On-site support included</li>
+          <li>24/7 priority response</li>
+        </ul>
+        <a href="#contact" class="plan-cta">Contact Us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="process">
+  <div class="section-inner">
+    <div class="section-label">How It Works</div>
+    <h2>Up and Running in 4 Steps</h2>
+    <p class="section-sub">We make switching to MinMIK simple and painless — with zero downtime for your business.</p>
+    <div class="process-steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h4>Free IT Audit</h4>
+        <p>We assess your current environment, identify risks, and document everything — at no cost.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h4>Tailored Proposal</h4>
+        <p>We present a clear plan with fixed pricing — no jargon, no hidden fees.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h4>Smooth Onboarding</h4>
+        <p>We migrate and configure your environment with zero disruption to your team.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h4>Ongoing Partnership</h4>
+        <p>Proactive monitoring, regular reviews, and responsive support — every month.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TECHNOLOGY -->
+<section style="background:var(--off-white); padding:3.5rem 5%;">
+  <div class="section-inner" style="text-align:center;">
+    <div class="section-label" style="text-align:center;">Technology Partners</div>
+    <h2 style="margin-bottom:2rem;">Built on Industry-Leading Platforms</h2>
+    <div class="tech-logos">
+      <div class="tech-logo">Microsoft Azure</div>
+      <div class="tech-logo">Microsoft 365</div>
+      <div class="tech-logo">Microsoft Intune</div>
+      <div class="tech-logo">Entra ID</div>
+      <div class="tech-logo">VMware vSphere</div>
+      <div class="tech-logo">Fortinet FortiGate</div>
+      <div class="tech-logo">SentinelOne</div>
+      <div class="tech-logo">Veeam</div>
+      <div class="tech-logo">Dicker Data</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<div class="cta-band">
+  <h2>Ready to Transform Your Business IT?</h2>
+  <p>Book a free 30-minute consultation with our Perth team today — no obligations.</p>
+  <a href="#contact" class="btn-primary" style="display:inline-flex;">Book Free Consultation →</a>
+</div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="section-label">Get in Touch</div>
+        <h2>Let's Talk About Your IT Needs</h2>
+        <p style="color:#6B7B8E; font-size:0.95rem; margin-bottom:2rem; line-height:1.7;">Whether you need a quick question answered or want to explore a full IT partnership, we're here to help. Perth-based and always responsive.</p>
+        <div class="contact-detail">
+          <div class="contact-icon">📧</div>
+          <div>
+            <h3>Email</h3>
+            <a href="mailto:hello@minmik.com">hello@minmik.com</a>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">🌐</div>
+          <div>
+            <h3>Website</h3>
+            <a href="https://minmik.com" target="_blank">minmik.com</a>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">📍</div>
+          <div>
+            <h3>Location</h3>
+            <p>Perth, Western Australia</p>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">⏰</div>
+          <div>
+            <h3>Business Hours</h3>
+            <p>Mon–Fri: 8:00 AM – 6:00 PM AWST</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <form class="contact-form" onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <div class="form-field">
+              <label>First Name</label>
+              <input type="text" placeholder="John" required>
+            </div>
+            <div class="form-field">
+              <label>Last Name</label>
+              <input type="text" placeholder="Smith" required>
+            </div>
+          </div>
+          <div class="form-field">
+            <label>Business Email</label>
+            <input type="email" placeholder="john@yourcompany.com.au" required>
+          </div>
+          <div class="form-field">
+            <label>Company Name</label>
+            <input type="text" placeholder="Your Business Pty Ltd">
+          </div>
+          <div class="form-field">
+            <label>Number of Users</label>
+            <select>
+              <option>1–10 users</option>
+              <option>11–25 users</option>
+              <option>26–50 users</option>
+              <option>51–100 users</option>
+              <option>100+ users</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label>How can we help?</label>
+            <textarea placeholder="Tell us about your current IT setup and what you're looking for..."></textarea>
+          </div>
+          <button type="submit" class="form-submit">Send Message →</button>
+          <p id="form-msg" style="font-size:0.85rem; color:#4CAF50; display:none; margin-top:0.5rem;">✓ Thanks! We'll be in touch within 24 hours.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#" class="logo">Min<span>MIK</span></a>
+      <p>Perth's trusted managed IT services partner — delivering enterprise-grade technology solutions to small and medium businesses across Western Australia.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Services</h5>
+      <ul>
+        <li><a href="#services">Cloud & Azure</a></li>
+        <li><a href="#services">Endpoint Management</a></li>
+        <li><a href="#services">Cybersecurity</a></li>
+        <li><a href="#services">Backup & DR</a></li>
+        <li><a href="#services">Network Security</a></li>
+        <li><a href="#services">IT Helpdesk</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <ul>
+        <li><a href="#why">About MinMIK</a></li>
+        <li><a href="#process">How It Works</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Contact</h5>
+      <ul>
+        <li><a href="mailto:hello@minmik.com">hello@minmik.com</a></li>
+        <li><a href="https://minmik.com">minmik.com</a></li>
+        <li><a href="#contact">Book a Consultation</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 MinMIK. All rights reserved. ABN: [Your ABN]</span>
+    <span>Perth, Western Australia</span>
+  </div>
+</footer>
+
+<script>
+function handleSubmit(e) {
+  e.preventDefault();
+  document.getElementById('form-msg').style.display = 'block';
+  e.target.reset();
+}
+
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+  });
+});
+</script>
+</body>
+</html>
